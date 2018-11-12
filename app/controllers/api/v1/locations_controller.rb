@@ -1,7 +1,8 @@
 class Api::V1::LocationsController < ApplicationController
 
   def index
-    render json: {name: "JQ"}
+    @locations = Location.all
+    render json: @locations, include:['routes', 'routes.reviews']
   end
 
 end
