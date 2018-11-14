@@ -18,7 +18,8 @@ coordinates = {
 
 }
 
-key =
+# Add API KEY HERE (eventually set up secrets)
+# key = 
 
 api_accessor = MountainProjectScraper.new
 api_accessor.run_code(coordinates, key)
