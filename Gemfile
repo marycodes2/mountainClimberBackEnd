@@ -38,6 +38,8 @@ group :development, :test do
 
   # Can create visual ERDs with 'erd' command, needs to brew install graphviz on the machine to work.
   gem 'rails-erd'
+
+  gem 'factory_bot_rails'
 end
 
 group :development do
