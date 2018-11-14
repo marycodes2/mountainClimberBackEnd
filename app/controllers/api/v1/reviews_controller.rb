@@ -9,6 +9,7 @@ class Api::V1::ReviewsController < ApplicationController
 
   def create
     @route = Route.find(params[:route_id])
+
     @review = @route.reviews.create(review_params)
     render json: @review
   end
