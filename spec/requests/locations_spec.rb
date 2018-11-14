@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 describe "GET /v1/locations" do
-  let(:locations) { FactoryBot.create_list(:location, 5, state: FactoryBot.create(:state)) }
+
+  let(:state_one) { FactoryBot.create(:state) }
+  let(:location_one) { FactoryBot.create(:location, name: "Location One", state: state_one)}
+  let(:location_two) { FactoryBot.create(:location, name: "Location two", state: state_one)}
+  let(:location_three) { FactoryBot.create(:location, name: "Location three", state: state_one)}
 
   before { get api_v1_locations_path }
 
