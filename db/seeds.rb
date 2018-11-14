@@ -7,17 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-washington = State.create(name: "Washington")
-seattle = washington.locations.create(name: "Seattle and Seattle Eastside")
-waterTower = seattle.routes.create(
-  name: "Volunteer Park Water Tower",
-  imgMedium: "https://cdn-files.apstatic.com/climb/106517600_medium_1494116429.jpg",
-  latitude: 47.6294,
-  longitude: -122.3147,
-  mpid: 106515697,
-  pitches: 1,
-  rating: "5.9+",
-  route_type: "TR"
-  )
+#Add coordinates below to add locations to db
+coordinates = {
+  :vegas => [36.1699, -115.1398],
+  :coopers => [39.6556, -79.7878],
+  :new_river => [38.0690, -81.0827],
+  :moab => [38.5733, -109.5498],
+  :seatle => [47.6062, -122.3321],
+  :dc => [38.9072, -77.0369]
 
-reviews = waterTower.reviews.create([{comments: "Gorgeous views", rating: 5, reviewer: "Bert Harris"}, {comments: "I don't like climbing metal", rating: 2, reviewer: "Charlotte Murphy"}])
+}
+
+key =
+
+api_accessor = MountainProjectScraper.new
+api_accessor.run_code(coordinates, key)
