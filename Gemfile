@@ -35,6 +35,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.8'
+
+  # Can create visual ERDs with 'erd' command, needs to brew install graphviz on the machine to work.
+  gem 'rails-erd'
 end
 
 group :development do
