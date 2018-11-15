@@ -6,6 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+washington = State.find_or_create_by(name: "Washington")
+seattle = washington.locations.create(name: "Seattle and Seattle Eastside")
+waterTower = seattle.routes.create(
+  name: "Volunteer Park Water Tower",
+  imgMedium: "https://cdn-files.apstatic.com/climb/106517600_medium_1494116429.jpg",
+  latitude: 47.6294,
+  longitude: -122.3147,
+  mpid: 106515697,
+  pitches: 1,
+  rating: "5.9+",
+  route_type: "TR"
+  )
+
+reviews = waterTower.reviews.create([{comments: "Gorgeous views", rating: 5, reviewer: "Bert Harris"}, {comments: "I don't like climbing metal", rating: 2, reviewer: "Charlotte Murphy"}])
 
 #Add coordinates below to add locations to db
 coordinates = {
@@ -25,17 +39,3 @@ api_accessor = MountainProjectScraper.new
 api_accessor.run_code(coordinates, key)
 
 
-washington = State.find_by(name: "Washington")
-seattle = washington.locations.create(name: "Seattle and Seattle Eastside")
-waterTower = seattle.routes.create(
-  name: "Volunteer Park Water Tower",
-  imgMedium: "https://cdn-files.apstatic.com/climb/106517600_medium_1494116429.jpg",
-  latitude: 47.6294,
-  longitude: -122.3147,
-  mpid: 106515697,
-  pitches: 1,
-  rating: "5.9+",
-  route_type: "TR"
-  )
-
-reviews = waterTower.reviews.create([{comments: "Gorgeous views", rating: 5, reviewer: "Bert Harris"}, {comments: "I don't like climbing metal", rating: 2, reviewer: "Charlotte Murphy"}])
