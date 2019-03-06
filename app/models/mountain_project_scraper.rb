@@ -21,6 +21,7 @@ class MountainProjectScraper < ApplicationRecord
     # return all_routes_at_location.class = hash
   end
 
+  #creates instances of each state using the list of routes
   def create_state_instance(all_routes_at_location)
     states = all_routes_at_location.values[0].each do |route_hash|
       state_name = route_hash["location"][0]
@@ -29,6 +30,7 @@ class MountainProjectScraper < ApplicationRecord
     end
   end
 
+   # create instances of locations
   def create_location_instance(route_hash, state)
     location_name = route_hash["location"][2]
     location = Location.find_or_create_by(:name => location_name)
@@ -36,6 +38,7 @@ class MountainProjectScraper < ApplicationRecord
     create_route_instance(route_hash, location)
   end
 
+   #create instances of routes
   def create_route_instance(route_hash, location)
     route_data = {name: route_hash["name"], route_type: route_hash["type"], rating: route_hash["rating"], pitches: route_hash["pitches"], imgMedium: route_hash["imgMedium"], longitude: route_hash["longitude"], latitude: route_hash["latitude"], mpid: route_hash["id"]}
     if Route.exists?(mpid: route_hash["id"])
@@ -46,6 +49,7 @@ class MountainProjectScraper < ApplicationRecord
     location.routes << route
   end
 
+   #for each call to the API, create staate, location, and route instances
   def run_code(coordinates, key)
     api_urls = create_api_urls(coordinates, key)
     api_urls.each do |url|
